@@ -1,0 +1,3 @@
+READ_TIMEOUT = Read timed out
+SERIES_MISSING = Warning: Commissioning Adapter: Series is missing for incoming episode, will retry later
+MASTER_MISSING = Warning: Commissioning Adapter: Master episode is missing for incoming episode, will retry later

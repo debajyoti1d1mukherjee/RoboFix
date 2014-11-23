@@ -1,0 +1,7 @@
+.body {background-color:yellow;}
+.button_text {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bolder;
+	width: 100px;
+	color:#344A02;
+}

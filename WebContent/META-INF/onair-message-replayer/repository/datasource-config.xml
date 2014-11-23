@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+    
+    <bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource"
+            lazy-init="true" destroy-method="close">
+        <property name="url" value="${onair.dataSource.jdbcURL}/${onair.dataSource.database}" />
+        <property name="username" value="${onair.dataSource.user}" />
+        <property name="password" value="${onair.dataSource.password}" />
+        <property name="driverClassName" value="${onair.dataSource.driverClass}" />
+        <property name="validationQuery" value="SELECT TRUE" />
+        <property name="initialSize" value="${onair.connectionPool.initialPoolSize}" />
+        <property name="maxActive" value="${onair.connectionPool.maxPoolSize}" />
+        <property name="maxIdle" value="10" />
+        <property name="minIdle" value="1" />
+        <property name="testOnBorrow" value="true" />
+    </bean>
+    
+	<util:properties id="hibernateProperties">
+		<prop key="hibernate.dialect">${onair.hibernate.dialect}</prop>
+		<prop key="hibernate.show_sql">${onair.hibernate.show_sql}</prop>
+		<prop key="hibernate.format_sql">${onair.hibernate.format_sql}</prop>
+		<prop key="hibernate.default_batch_fetch_size">${onair.hibernate.default_batch_fetch_size}</prop>
+		<prop key="hibernate.generate_statistics">${onair.hibernate.generate_statistics}</prop>
+		<prop key="hibernate.use_sql_comments">${onair.hibernate.use_sql_comments}</prop>
+		<prop key="hibernate.jdbc.batch_size">${onair.hibernate.jdbc.batch_size}</prop>
+		<prop key="hibernate.cache.use_second_level_cache">${onair.hibernate.cache.use_second_level_cache}</prop>
+		<prop key="hibernate.cache.use_query_cache">${onair.hibernate.cache.use_query_cache}</prop>
+		<prop key="hibernate.cache.provider_class">${onair.hibernate.cache.provider_class}</prop>
+		<prop key="hibernate.cache.use_structured_entries">${onair.hibernate.cache.use_structured_entries}</prop>
+		<prop key="hibernate.bytecode.provider">${onair.hibernate.bytecode.provider}</prop>
+	</util:properties>
+	
+	  <bean id="dataSourceForDerby" class="org.apache.tomcat.jdbc.pool.DataSource"
+            lazy-init="true" destroy-method="close">
+        <property name="url" value="${derby.dataSource.jdbcURL}/${derby.dataSource.database}" />
+        <property name="driverClassName" value="${derby.dataSource.driverClass}" />
+        <property name="validationQuery" value="SELECT TRUE" />
+        <property name="initialSize" value="${derby.connectionPool.initialPoolSize}" />
+        <property name="maxActive" value="${derby.connectionPool.initialPoolSize}" />
+        <property name="maxIdle" value="10" />
+        <property name="minIdle" value="1" />
+        <property name="testOnBorrow" value="true" />
+    </bean>
+	
+	<util:properties id="hibernatePropertiesForDerby">
+		<prop key="hibernate.dialect">${derby.hibernate.dialect}</prop>
+		<prop key="hibernate.show_sql">${derby.hibernate.show_sql}</prop>
+		<prop key="hibernate.format_sql">${derby.hibernate.format_sql}</prop>
+		<prop key="hibernate.default_batch_fetch_size">${derby.hibernate.default_batch_fetch_size}</prop>
+		<prop key="hibernate.generate_statistics">${derby.hibernate.generate_statistics}</prop>
+		<prop key="hibernate.use_sql_comments">${derby.hibernate.use_sql_comments}</prop>
+		<prop key="hibernate.jdbc.batch_size">${derby.hibernate.jdbc.batch_size}</prop>
+		<prop key="hibernate.cache.use_second_level_cache">${derby.hibernate.cache.use_second_level_cache}</prop>
+		<prop key="hibernate.cache.use_query_cache">${derby.hibernate.cache.use_query_cache}</prop>
+		<prop key="hibernate.cache.provider_class">${derby.hibernate.cache.provider_class}</prop>
+		<prop key="hibernate.cache.use_structured_entries">${derby.hibernate.cache.use_structured_entries}</prop>
+		<prop key="hibernate.bytecode.provider">${derby.hibernate.bytecode.provider}</prop>
+	</util:properties>
+	
+</beans>
